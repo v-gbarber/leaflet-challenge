@@ -1,3 +1,5 @@
+//API KEY
+const API_KEY = "pk.eyJ1IjoiY2hleWVubmVwYXJyb3R0IiwiYSI6ImNraGJhZnp6czBkbG0ycnNhMWozcGpsYWMifQ.lL6x_cnw_ya4MtHSvTJ_gA"
 // Store our API endpoint as url.
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
@@ -35,35 +37,9 @@ function createFeatures(quakeData) {
   });
 
 
-    // // Create a new marker cluster group.
-    // var markers = L.marker();
-
-    // // Loop through the data.
-    // for (var i = 0; i < response.length; i++) {
-  
-    //   // Set the data location property to a variable.
-    //   var location = response[i].location;
-  
-    //   // Check for the location property.
-    //   if (location) {
-  
-    //     // Add a new marker to the cluster group, and bind a popup.
-    //     markers.addLayer(L.marker([location.coordinates[1], location.coordinates[0]])
-    //       .bindPopup(response[i].descriptor));
-    //   }
-  
-    // }
-  
-    // var magnitude = quakeData[i].properties.mag
-    // var lat = quakeData[i].geometry.coordinates[1]
-    // var lng = quakeData[i].geometry.coordinates[0]
-    // var latlng = [lat,lng]
-    // var depth = quakeData[i].geometry.coordinates[2]
-    // var color = "";
-
   // Different marker based on earthquake magnitude
 function markerSize(magnitude) {
-    return magnitude * 5;
+    return magnitude * 40000;
 }
 
 // Define a color function that sets the color of a marker based on earthquake magnitude
@@ -86,8 +62,6 @@ function magColor(depth) {
       else { 
         color = "lime"
       }
-         // Add our marker cluster layer to the map.
-    // myMap.addLayer(markers);
   
 };
 
@@ -146,78 +120,3 @@ function createMap(quakes) {
 };
 legend.addTo(Map);
 }
-
-
-
-
-
-
-// // API url
-// var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
-
-
-// // Read url with d3 library
-// d3.json(url).then(function(data){
-
-//   // Get response, send the data.features object to the createEarthquakes function
-//   createEarthquakes(data.features);
-// });
-
-// function createEarthquakes(quakeData) {
-
-//   var quakeMarkers = [];
-
-//   for (var i = 0; i < quakeData.length; i++) {
-
-//     var magnitude = quakeData[i].properties.mag
-//     var lat = quakeData[i].geometry.coordinates[1]
-//     var lng = quakeData[i].geometry.coordinates[0]
-//     var latlng = [lat,lng]
-//     var depth = quakeData[i].geometry.coordinates[2]
-//     var color = "";
-//     if (depth < 10){
-//       color = "yellow"
-//     }
-//     else if (depth < 30) {
-//       color = "lime"
-//     }
-//     else if (depth < 50) {
-//       color = "orange"
-//     }
-//     else if (depth < 70) {
-//       color = "red"
-//     }
-//     else if (depth < 90) {
-//       color = "purple"
-//     }
-//     else {
-//       color = "maroon"
-//     }
-//     quakeMarkers.push(
-//       L.circle(latlng, {
-//         stroke: false,
-//         fillOpacity: 0.5,
-//         color: "white",
-//         fillColor: color,
-//         radius: magnitude*50000
-//       }).bindPopup("<h3>" + quakeData[i].properties.title +
-//           "</h3><hr><p>" + new Date(quakeData[i].properties.time) + "</p>")
-//     )
-//   }
-//     //mapping
-//     var map = L.map('map').setView([-66.9438333333333, 17.816], 8.27);
-
-
-//     // Create a legend to display information about our map
-//     var legend = L.control({
-//         position: "bottomright",
-//         fillColor: "white"
-//       });
-      
-//       // When the layer control is added, insert a div with the class of "legend"
-//       legend.onAdd = function() {
-   
-//       };
-//       // Add the legend to the map
-//       legend.addTo(map);
-//     }
