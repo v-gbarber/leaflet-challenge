@@ -14,7 +14,7 @@ function magColors(depth){
     return "orangeRed"
   }
   else if (depth >50){
-    return "lightOrange"
+    return "orange"
   }
   else if (depth >30){
     return "yellow"
